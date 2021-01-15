@@ -27,7 +27,7 @@ Small command line program to pull data from a database hosted on Heroku.
 Requires the heroku CLI to be installed.
 
 USAGE:
-    harharget_database_namevestget_database_namevest [args]
+    harvest [args]
 
 ARGS:
     --app=<app>
@@ -37,9 +37,7 @@ ARGS:
 EXAMPLE:
     harvest --app=myapp --env=staging --local-db-=myapp_dev
 
-    The program will fetch the app's database URL with the `heroku config:get DATABASE_URL --app myapp-staging` command.
-    Then, it sets the environment variable DATABASE_URL on the local computer and run the command `heroku pg:pull DATABASE_URL myapp_dev --app myapp-staging`.
-    Finally, it unsets the DATABASE_URL environment variable.
+    Fetches the app's database name from Heroku and then run the `heroku pg:pull <remote database name> <local database name> --app <heroku app name>` command.
 ";
 
         println!("{}", help);
