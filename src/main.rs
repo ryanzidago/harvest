@@ -43,6 +43,7 @@ EXAMPLE:
     harvest --app=myapp --env=staging --local-db-=myapp_dev
 
     Fetches the app's database name from Heroku and then run the `heroku pg:pull <remote database name> <local database name> --app <heroku app name>` command.
+    See https://devcenter.heroku.com/articles/heroku-postgresql for more information on the `heroku pg:pull` command.
 ";
 
         println!("{}", help);
