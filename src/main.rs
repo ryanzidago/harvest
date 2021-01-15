@@ -5,7 +5,7 @@ use std::process::Command;
 fn main() {
     let argv: Vec<String> = env::args().collect();
 
-    maybe_display_help(&argv[1]);
+    maybe_display_help(&argv);
 
     let app_name: String = parse_arg(&argv[1], &String::from("--app="));
     let env_name: String = parse_arg(&argv[2], &String::from("--env="));
@@ -20,8 +20,13 @@ fn main() {
     );
 }
 
-fn maybe_display_help(arg: &String) {
-    if arg.starts_with("--help") {
+fn maybe_display_help(argv: &Vec<String>) {
+    if argv.len() == 1 {
+        println!("harvest: try 'harvest --help' for more information");
+        exit(0);
+    }
+
+    if argv[1].starts_with("--help") {
         let help = "harvest
 Small command line program to pull data from a database hosted on Heroku.
 Requires the heroku CLI to be installed.
